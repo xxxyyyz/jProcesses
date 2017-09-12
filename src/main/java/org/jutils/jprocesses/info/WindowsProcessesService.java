@@ -50,6 +50,7 @@ class WindowsProcessesService extends AbstractProcessesService {
 
     private static final String NAME_PROPNAME = "Name";
     private static final String PROCESSID_PROPNAME = "ProcessId";
+    private static final String PARENT_PROCESSID_PROPNAME = "ParentProcessId";
     private static final String USERMODETIME_PROPNAME = "UserModeTime";
     private static final String PRIORITY_PROPNAME = "Priority";
     private static final String VIRTUALSIZE_PROPNAME = "VirtualSize";
@@ -60,10 +61,12 @@ class WindowsProcessesService extends AbstractProcessesService {
 
     private final WMI4Java wmi4Java;
 
+
     static {
         Map<String, String> tmpMap = new HashMap<String, String>();
         tmpMap.put(NAME_PROPNAME, "proc_name");
         tmpMap.put(PROCESSID_PROPNAME, "pid");
+        tmpMap.put(PARENT_PROCESSID_PROPNAME, "ppid");
         tmpMap.put(USERMODETIME_PROPNAME, "proc_time");
         tmpMap.put(PRIORITY_PROPNAME, "priority");
         tmpMap.put(VIRTUALSIZE_PROPNAME, "virtual_memory");
@@ -268,6 +271,7 @@ class WindowsProcessesService extends AbstractProcessesService {
             if (String.valueOf(pid).equals(process.get("pid"))) {
                 ProcessInfo info = new ProcessInfo();
                 info.setPid(process.get("pid"));
+                info.setPpid(process.get("ppid"));
                 info.setName(process.get("proc_name"));
                 info.setTime(process.get("proc_time"));
                 info.setCommand(process.get("command"));

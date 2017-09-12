@@ -26,6 +26,7 @@ import java.util.Map;
 public class ProcessInfo {
 
     private String pid;
+    private String ppid;
     private String time;
     private String name;
     private String user;
@@ -42,8 +43,9 @@ public class ProcessInfo {
     public ProcessInfo() {
     }
 
-    public ProcessInfo(String pid, String time, String name, String user, String virtualMemory, String physicalMemory, String cpuUsage, String startTime, String priority, String command) {
+    public ProcessInfo(String pid, String ppid, String time, String name, String user, String virtualMemory, String physicalMemory, String cpuUsage, String startTime, String priority, String command) {
         this.pid = pid;
+        this.ppid = ppid;
         this.time = time;
         this.name = name;
         this.user = user;
@@ -61,6 +63,14 @@ public class ProcessInfo {
 
     public void setPid(String pid) {
         this.pid = pid;
+    }
+
+    public String getPpid() {
+        return ppid;
+    }
+
+    public void setPpid(String ppid) {
+        this.ppid = ppid;
     }
 
     public String getTime() {

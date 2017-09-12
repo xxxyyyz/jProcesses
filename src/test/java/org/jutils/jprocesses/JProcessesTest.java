@@ -51,6 +51,7 @@ public class JProcessesTest {
 
         for (final ProcessInfo processInfo : processesList) {
             System.out.println("Process PID: " + processInfo.getPid());
+            System.out.println("Parent Process PID: " + processInfo.getPpid());
             System.out.println("Process Name: " + processInfo.getName());
             System.out.println("Process Time: " + processInfo.getTime());
             System.out.println("User: " + processInfo.getUser());
